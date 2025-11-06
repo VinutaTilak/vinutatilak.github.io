@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Vinuta's Portfolio</title>
+    <script>
+        // Prevent scroll restoration immediately
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        // Scroll to top immediately before page renders
+        window.scrollTo(0, 0);
+    </script>
+    <link rel="stylesheet" href="styles.css?v=202501270037">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Vinuta Lakshmi Tilak</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link active">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Me</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Header -->
+    <section class="projects-header">
+        <div class="container">
+            <h1 class="page-title">My Projects</h1>
+            <p class="page-subtitle">Explore my work across business strategy, innovation and project management.</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <h3>Filter by Keywords</h3>
+                <div class="filter-tags">
+                    <button class="filter-tag active" data-filter="all">All</button>
+                    <button class="filter-tag" data-filter="strategy">Strategy</button>
+                    <button class="filter-tag" data-filter="agile">Agile</button>
+                    <button class="filter-tag" data-filter="innovation">Innovation</button>
+                    <button class="filter-tag" data-filter="branding">Branding</button>
+                    <button class="filter-tag" data-filter="digital">Digital</button>
+                    <button class="filter-tag" data-filter="business transformation">Business Transformation</button>
+                    <button class="filter-tag" data-filter="change management">Change Management</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Content -->
+    <section class="projects-content">
+        <div class="projects-wrapper">
+            <!-- Innovation Management Category -->
+            <div class="project-category" data-category="innovation-management">
+                <h2 class="category-title">Innovation Management</h2>
+                <div class="project-list">
+                    <!-- Schindler in Metaverse -->
+                    <div class="project-list-item" data-project="schindler-metaverse" data-filter="innovation strategy transformation digital metaverse">
+                        <div class="project-item-header">
+                            <h3 class="project-item-title">Schindler in Metaverse</h3>
+                            <div class="project-item-meta">
+                                <span class="project-year">2022</span>
+                                <span class="project-type">Innovation Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-expand-panel" data-project="schindler-metaverse">
+                            <div class="project-summary">
+                                <p>"Elevator Pitch" — an immersive experience designed for Schindler that combines metaverse, NFT, and elevator technologies to connect physical and virtual workplaces through meaningful interactions for intrapreneurship.</p>
+                            </div>
+                            <div class="project-story-layout">
+                                <div class="timeline-nav">
+                                    <div class="timeline-item active" data-stage="1">
+                                        <span class="timeline-label">1. Project Overview</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="2">
+                                        <span class="timeline-label">2. Context & Technology</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="3">
+                                        <span class="timeline-label">3. Inspiration & Ideation</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="4">
+                                        <span class="timeline-label">4. Innovation of Meaning</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="5">
+                                        <span class="timeline-label">5. Storyboard</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="6">
+                                        <span class="timeline-label">6. Personas & Feasibility</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="7">
+                                        <span class="timeline-label">7. Prototype Preview</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="8">
+                                        <span class="timeline-label">8. Demo Video</span>
+                                    </div>
+                                </div>
+                                <div class="story-content">
+                                    <div class="story-slideshow">
+                                        <div class="story-slide active" data-stage="1">
+                                            <img src="schindler-metaverse/schindler-metaverseslide-1-virtual-physical-ux.jpg.png" alt="Virtual UX Metaverse & Physical UX Elevator - Project Overview" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="2">
+                                            <img src="schindler-metaverse/schindler-metaverseslide-2-context-&-tech.png" alt="Context & Technology Mapping - STEEP, SWOT, and Tech Ecosystem" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="3">
+                                            <img src="schindler-metaverse/schindler-metaverseslide-3-inspiration-&-ideation.png" alt="Cultural Inspiration & Ideation - Meaning Chain & Concept Origins" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="4">
+                                            <img src="schindler-metaverse/schindler-metaverseslide-4-innovation-of-meaning.png" alt="Innovation of Meaning - From Old Values to Elevator Pitch Idea" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="5">
+                                            <img src="schindler-metaverse/schindler-metaverseslide-5-storyboard.png" alt="Experience Storyboard - Visualizing User Interaction" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="6">
+                                            <img src="schindler-metaverse/schindler-metaverseslide-6-personas-&-feasibility.png" alt="Personas, Journey & Feasibility - Customer Insights & ROI Projection" style="width: 100%; height: 100%; object-fit: cover;">
+                                            </div>
+                                        <div class="story-slide" data-stage="7">
+                                            <img src="schindler-metaverse/schindler-metaverseslide-7-prototype.png" alt="Interactive Prototype Preview - Try the Elevator Pitch Experience" style="width: 100%; height: 100%; object-fit: cover;">
+                                            </div>
+                                        <div class="story-slide" data-stage="8">
+                                            <video controls style="width: 100%; height: 100%; object-fit: cover;">
+                                                <source src="schindler-metaverse/demo-video.mp4" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collapse-bar">
+                                <button class="collapse-btn">
+                                    <i class="fas fa-chevron-up"></i>
+                                    <span>Collapse Project</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campus Familia - HIDDEN (to be updated later) -->
+                    <!--
+                    <div class="project-list-item" data-project="campus-familia">
+                        <div class="project-item-header">
+                            <h3 class="project-item-title">Campus Familia</h3>
+                            <div class="project-item-meta">
+                                <span class="project-year">2024</span>
+                                <span class="project-type">Digital Innovation</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-expand-panel" data-project="campus-familia">
+                            <div class="project-summary">
+                                <p>Designed and implemented a comprehensive digital platform for family engagement in educational institutions, focusing on seamless communication and community building.</p>
+                            </div>
+                            <div class="project-story-layout">
+                                <div class="timeline-nav">
+                                    <div class="timeline-item active" data-stage="1">
+                                        <span class="timeline-label">Part 1</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="2">
+                                        <span class="timeline-label">Part 2</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="3">
+                                        <span class="timeline-label">Part 3</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="4">
+                                        <span class="timeline-label">Part 4</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="5">
+                                        <span class="timeline-label">Part 5</span>
+                                    </div>
+                                </div>
+                                <div class="story-content">
+                                    <div class="story-slideshow">
+                                        <div class="story-slide active" data-stage="1">
+                                            <div class="story-visual">
+                                                <img src="https://via.placeholder.com/600x400/1e3a8a/FFFFFF?text=User+Research" alt="User Research">
+                                            </div>
+                                            <div class="story-text">
+                                                <h4>Family Engagement Research</h4>
+                                                <p>Conducted in-depth interviews with parents, teachers, and administrators to understand pain points in family-school communication and identify opportunities for digital innovation.</p>
+                                            </div>
+                                        </div>
+                                        <div class="story-slide" data-stage="2">
+                                            <div class="story-visual">
+                                                <img src="https://via.placeholder.com/600x400/87CEEB/FFFFFF?text=Platform+Design" alt="Platform Design">
+                                            </div>
+                                            <div class="story-text">
+                                                <h4>Platform Architecture Design</h4>
+                                                <p>Designed intuitive user interface and experience flows for seamless family engagement, including real-time communication, event management, and progress tracking features.</p>
+                                            </div>
+                                        </div>
+                                        <div class="story-slide" data-stage="3">
+                                            <div class="story-visual">
+                                                <img src="https://via.placeholder.com/600x400/1e40af/FFFFFF?text=Development" alt="Development">
+                                            </div>
+                                            <div class="story-text">
+                                                <h4>Agile Development Process</h4>
+                                                <p>Led cross-functional development team using agile methodologies to build scalable platform with mobile-first approach and robust security features.</p>
+                                            </div>
+                                        </div>
+                                        <div class="story-slide" data-stage="4">
+                                            <div class="story-visual">
+                                                <img src="https://via.placeholder.com/600x400/4a90e2/FFFFFF?text=Testing" alt="Testing">
+                                            </div>
+                                            <div class="story-text">
+                                                <h4>User Testing & Iteration</h4>
+                                                <p>Conducted comprehensive user testing with pilot schools, gathering feedback and iterating on features to ensure optimal user experience and adoption.</p>
+                                            </div>
+                                        </div>
+                                        <div class="story-slide" data-stage="5">
+                                            <div class="story-visual">
+                                                <img src="https://via.placeholder.com/600x400/2d5a87/FFFFFF?text=Launch" alt="Launch">
+                                            </div>
+                                            <div class="story-text">
+                                                <h4>Successful Platform Launch</h4>
+                                                <p>Achieved 85% family adoption rate within first 3 months, 50% reduction in administrative communication time, and established strong community engagement metrics.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collapse-bar">
+                                <button class="collapse-btn">
+                                    <i class="fas fa-chevron-up"></i>
+                                    <span>Collapse Project</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+
+            <!-- Brand Management Category -->
+            <div class="project-category" data-category="brand-management">
+                <h2 class="category-title">Brand Management</h2>
+                <div class="project-list">
+                    <!-- Brand Analysis of Patagonia -->
+                    <div class="project-list-item" data-project="patagonia-analysis" data-filter="branding identity analysis communication">
+                        <div class="project-item-header">
+                            <h3 class="project-item-title">Brand Analysis of Patagonia</h3>
+                            <div class="project-item-meta">
+                                <span class="project-year">2022</span>
+                                <span class="project-type">Brand Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-expand-panel" data-project="patagonia-analysis">
+                            <div class="project-summary">
+                                <p>A strategic brand analysis of Patagonia exploring how purpose-driven sustainability translates into identity, storytelling, and customer experience across digital and physical ecosystems.</p>
+                            </div>
+                            <div class="project-story-layout">
+                                <div class="timeline-nav">
+                                    <div class="timeline-item active" data-stage="1">
+                                        <span class="timeline-label">1. Project Overview</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="2">
+                                        <span class="timeline-label">2. Brand Identity & Purpose</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="3">
+                                        <span class="timeline-label">3. Strategic Positioning</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="4">
+                                        <span class="timeline-label">4. Market & Consumer Insights</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="5">
+                                        <span class="timeline-label">5. Sustainability-Driven Value System</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="6">
+                                        <span class="timeline-label">6. Online & Offline Customer Experience</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="7">
+                                        <span class="timeline-label">7. Message Strategy & Storytelling</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="8">
+                                        <span class="timeline-label">8. Communication Strategy</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="9">
+                                        <span class="timeline-label">9. Digital Ecosystem</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="10">
+                                        <span class="timeline-label">10. Conversion Funnel</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="11">
+                                        <span class="timeline-label">11. Strategic Levers & Future Direction</span>
+                                    </div>
+                                </div>
+                                <div class="story-content">
+                                    <div class="story-slideshow">
+                                        <div class="story-slide active" data-stage="1">
+                                            <img src="patagonia-analysis/patagonia-analysis-slide-1-Project Overview.png" alt="Project Overview" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="2">
+                                            <img src="patagonia-analysis/patagonia-analysis-slide-2-Brand Identity & Purpose.png" alt="Brand Identity & Purpose" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="3">
+                                            <img src="patagonia-analysis/patagonia-analysis-slide-3-Strategic Positioning.png" alt="Strategic Positioning" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="4">
+                                            <img src="patagonia-analysis/patagonia-analysis-slide-4-Market & Consumer Insights.png" alt="Market & Consumer Insights" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="5">
+                                            <img src="patagonia-analysis/patagonia-analysis-slide-5-Sustainability-Driven Value System.png" alt="Sustainability-Driven Value System" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="6">
+                                            <img src="patagonia-analysis/patagonia-analysis-slide-6-Online & Offline Customer Experience.png" alt="Online & Offline Customer Experience" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="7">
+                                            <img src="patagonia-analysis/patagonia-analysis-slide-7-Message Strategy & Storytelling.png" alt="Message Strategy & Storytelling" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="8">
+                                            <img src="patagonia-analysis/patagonia-analysis-slide-8-Communication Strategy.png" alt="Communication Strategy" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="9">
+                                            <img src="patagonia-analysis/patagonia-analysis-slide-9-Digital Ecosystem.png" alt="Digital Ecosystem" style="width: 100%; height: 100%; object-fit: cover;">
+                                            </div>
+                                        <div class="story-slide" data-stage="10">
+                                            <img src="patagonia-analysis/patagonia-analysis-slide-10-Conversion Funnel.png" alt="Conversion Funnel" style="width: 100%; height: 100%; object-fit: cover;">
+                                            </div>
+                                        <div class="story-slide" data-stage="11">
+                                            <img src="patagonia-analysis/patagonia-analysis-slide-11-Strategic Levers & Future Direction.png" alt="Strategic Levers & Future Direction" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collapse-bar">
+                                <button class="collapse-btn">
+                                    <i class="fas fa-chevron-up"></i>
+                                    <span>Collapse Project</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dummy Brand Management - HIDDEN (to be updated later) -->
+                    <!--
+                    <div class="project-list-item" data-project="dummy-brand">
+                        <div class="project-item-header">
+                            <h3 class="project-item-title">Dummy Brand Management</h3>
+                            <div class="project-item-meta">
+                                <span class="project-year">2024</span>
+                                <span class="project-type">Brand Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-expand-panel" data-project="dummy-brand">
+                            <div class="project-summary">
+                                <p>Developed a comprehensive brand management strategy for a large-scale digital transformation initiative, focusing on brand positioning and stakeholder engagement. The project aimed to revolutionize brand efficiency through innovative management practices.</p>
+                            </div>
+                            <div class="project-story-layout">
+                                <div class="timeline-nav">
+                                    <div class="timeline-item active" data-stage="1">
+                                        <span class="timeline-label">Part 1</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="2">
+                                        <span class="timeline-label">Part 2</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="3">
+                                        <span class="timeline-label">Part 3</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="4">
+                                        <span class="timeline-label">Part 4</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="5">
+                                        <span class="timeline-label">Part 5</span>
+                                    </div>
+                                </div>
+                                <div class="story-content">
+                                    <div class="story-slideshow">
+                                        <div class="story-slide active" data-stage="1">
+                                            <div class="story-visual">
+                                                <img src="https://via.placeholder.com/600x400/1e3a8a/FFFFFF?text=Brand+Analysis" alt="Analysis Phase">
+                                            </div>
+                                            <div class="story-text">
+                                                <h4>Brand Analysis & Assessment</h4>
+                                                <p>Conducted comprehensive analysis of current brand positioning, market perception, and competitive landscape to identify opportunities for brand enhancement and growth.</p>
+                                            </div>
+                                        </div>
+                                        <div class="story-slide" data-stage="2">
+                                            <div class="story-visual">
+                                                <img src="https://via.placeholder.com/600x400/87CEEB/FFFFFF?text=Brand+Strategy" alt="Strategy Phase">
+                                            </div>
+                                            <div class="story-text">
+                                                <h4>Strategic Brand Framework</h4>
+                                                <p>Created a comprehensive brand management framework, including brand guidelines, messaging strategies, and multi-channel communication approaches.</p>
+                                            </div>
+                                        </div>
+                                        <div class="story-slide" data-stage="3">
+                                            <div class="story-visual">
+                                                <img src="https://via.placeholder.com/600x400/1e40af/FFFFFF?text=Brand+Implementation" alt="Implementation Phase">
+                                            </div>
+                                            <div class="story-text">
+                                                <h4>Brand Implementation</h4>
+                                                <p>Led brand transformation through consistent messaging, visual identity implementation, and stakeholder engagement across all touchpoints.</p>
+                                            </div>
+                                        </div>
+                                        <div class="story-slide" data-stage="4">
+                                            <div class="story-visual">
+                                                <img src="https://via.placeholder.com/600x400/4a90e2/FFFFFF?text=Brand+Monitoring" alt="Monitoring Phase">
+                                            </div>
+                                            <div class="story-text">
+                                                <h4>Brand Performance Monitoring</h4>
+                                                <p>Implemented monitoring systems to track brand performance, measure brand awareness, and optimize brand strategies for maximum impact.</p>
+                                            </div>
+                                        </div>
+                                        <div class="story-slide" data-stage="5">
+                                            <div class="story-visual">
+                                                <img src="https://via.placeholder.com/600x400/2d5a87/FFFFFF?text=Brand+Success" alt="Success Phase">
+                                            </div>
+                                            <div class="story-text">
+                                                <h4>Brand Success & Impact</h4>
+                                                <p>Achieved 40% increase in brand awareness, 60% improvement in brand perception, and established strong brand equity for sustainable long-term growth.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collapse-bar">
+                                <button class="collapse-btn">
+                                    <i class="fas fa-chevron-up"></i>
+                                    <span>Collapse Project</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
+                </div>
+            </div>
+
+            <!-- Project Management Category -->
+            <div class="project-category" data-category="project-management">
+                <h2 class="category-title">Project Management</h2>
+                <div class="project-list">
+                    <!-- Agile Project Management PWC -->
+                    <div class="project-list-item" data-project="dummy-project" data-filter="agile planning backlog epic user story roadmap">
+                        <div class="project-item-header">
+                            <h3 class="project-item-title">Agile Project Management PWC</h3>
+                            <div class="project-item-meta">
+                                <span class="project-year">2022</span>
+                                <span class="project-type">Agile Project</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-expand-panel" data-project="dummy-project">
+                            <div class="project-summary">
+                                <p>Led a comprehensive agile project management initiative for PWC, focusing on agile methodologies, stakeholder engagement, and cross-functional leadership. The project demonstrated best practices in project planning, backlog management, and sprint execution.</p>
+                            </div>
+                            <div class="project-story-layout">
+                                <div class="timeline-nav">
+                                    <div class="timeline-item active" data-stage="1">
+                                        <span class="timeline-label">1. Project Overview</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="2">
+                                        <span class="timeline-label">2. Project Definition</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="3">
+                                        <span class="timeline-label">3. Project Organization</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="4">
+                                        <span class="timeline-label">4. Roles and Responsibilities</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="5">
+                                        <span class="timeline-label">5. Project Methodology</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="6">
+                                        <span class="timeline-label">6. Project Plan Part 1</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="7">
+                                        <span class="timeline-label">7. Project Plan Part 2</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="8">
+                                        <span class="timeline-label">8. Epics and User Stories Overview</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="9">
+                                        <span class="timeline-label">9. Epics and User Stories Part 1</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="10">
+                                        <span class="timeline-label">10. Epics and User Stories Part 2</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="11">
+                                        <span class="timeline-label">11. Product Backlog</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="12">
+                                        <span class="timeline-label">12. Backlog Prioritization Overview</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="13">
+                                        <span class="timeline-label">13. Backlog Prioritization</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="14">
+                                        <span class="timeline-label">14. Sprint Backlog Part 1</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="15">
+                                        <span class="timeline-label">15. Sprint Backlog Part 2</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="16">
+                                        <span class="timeline-label">16. Product Roadmap</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="17">
+                                        <span class="timeline-label">17. Budget</span>
+                                    </div>
+                                </div>
+                                <div class="story-content">
+                                    <div class="story-slideshow">
+                                        <div class="story-slide active" data-stage="1">
+                                            <img src="agile-project-pwc/agile-slide1-cover-page.png" alt="Cover Page" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="2">
+                                            <img src="agile-project-pwc/agile-slide2-project-definition.png" alt="Project Definition" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="3">
+                                            <img src="agile-project-pwc/agile-slide3-project-organizational-chart.png" alt="Project Organizational Chart" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="4">
+                                            <img src="agile-project-pwc/agile-slide4-roles-and-responsibility.png" alt="Roles and Responsibility" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="5">
+                                            <img src="agile-project-pwc/agile-slide5-project-methodology.png" alt="Project Methodology" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="6">
+                                            <img src="agile-project-pwc/agile-slide6-project-plan1.png" alt="Project Plan 1" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="7">
+                                            <img src="agile-project-pwc/agile-slide7-project-plan2.png" alt="Project Plan 2" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="8">
+                                            <img src="agile-project-pwc/agile-slide8-epics-overview.png" alt="Epics Overview" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="9">
+                                            <img src="agile-project-pwc/agile-slide9-epics-and-user-stories1.png" alt="Epics and User Stories 1" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="10">
+                                            <img src="agile-project-pwc/agile-slide10-epics-and-user-stories2.png" alt="Epics and User Stories 2" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="11">
+                                            <img src="agile-project-pwc/agile-slide11-product-backlog.png" alt="Product Backlog" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="12">
+                                            <img src="agile-project-pwc/agile-slide12-backlog-prioritization-overview.png" alt="Backlog Prioritization Overview" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="13">
+                                            <img src="agile-project-pwc/agile-slide13-backlog-prioritization.png" alt="Backlog Prioritization" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="14">
+                                            <img src="agile-project-pwc/agile-slide14-sprint-backlog1.png" alt="Sprint Backlog 1" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="15">
+                                            <img src="agile-project-pwc/agile-slide15-sprint-backlog2.png" alt="Sprint Backlog 2" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="16">
+                                            <img src="agile-project-pwc/agile-slide16-product-roadmap.png" alt="Product Roadmap" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="17">
+                                            <img src="agile-project-pwc/agile-slide17-budget.png" alt="Budget" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collapse-bar">
+                                <button class="collapse-btn">
+                                    <i class="fas fa-chevron-up"></i>
+                                    <span>Collapse Project</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategic Innovation and Organizational Change Category -->
+            <div class="project-category" data-category="organizational-design">
+                <h2 class="category-title">Strategic Innovation and Organizational Change</h2>
+                <div class="project-list">
+                    <!-- Strategic Innovation of Moleskine -->
+                    <div class="project-list-item" data-project="moleskine-strategic-innovation" data-filter="innovation change culture identity organizational design digital">
+                        <div class="project-item-header">
+                            <h3 class="project-item-title">Strategic Innovation of Moleskine</h3>
+                            <div class="project-item-meta">
+                                <span class="project-year">2022</span>
+                                <span class="project-type">Strategic Innovation</span>
+                                <span class="project-type">Organizational Change</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-expand-panel" data-project="moleskine-strategic-innovation">
+                            <div class="project-summary">
+                                <p>Developed a strategic innovation roadmap for Moleskine, designing 'Wordsmart'—a digital learning venture that bridged creative craftsmanship with EdTech through cultural transformation, ambidextrous organization design, and a strategic partnership with Mattel.</p>
+                            </div>
+                            <div class="project-story-layout">
+                                <div class="timeline-nav">
+                                    <div class="timeline-item active" data-stage="1">
+                                        <span class="timeline-label">1. Project Overview</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="2">
+                                        <span class="timeline-label">2. External and Internal Analysis</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="3">
+                                        <span class="timeline-label">3. Innovation Concept – WORDSMART</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="4">
+                                        <span class="timeline-label">4. Overcoming Inertia and checking Framework of Fit</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="5">
+                                        <span class="timeline-label">5. Ambidexterity</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="6">
+                                        <span class="timeline-label">6. Search Type, Strategy and Approach</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="7">
+                                        <span class="timeline-label">7. Strategic Partnership</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="8">
+                                        <span class="timeline-label">8. Culture Change</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="9">
+                                        <span class="timeline-label">9. Identity Change</span>
+                                    </div>
+                                    <div class="timeline-item" data-stage="10">
+                                        <span class="timeline-label">10. Setting Goals, KPIs and Timeline</span>
+                                    </div>
+                                </div>
+                                <div class="story-content">
+                                    <div class="story-slideshow">
+                                        <div class="story-slide active" data-stage="1">
+                                            <img src="moleskine-strategic-innovation/moleskine-slide1-coverpage.png" alt="Project Overview" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="2">
+                                            <img src="moleskine-strategic-innovation/moleskine-slide2-external-internal-analysis.png" alt="External and Internal Analysis" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="3">
+                                            <img src="moleskine-strategic-innovation/moleskine-slide3-innovation-concept-wordsmart.png" alt="Innovation Concept – WORDSMART" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="4">
+                                            <img src="moleskine-strategic-innovation/moleskine-slide4-inertia-fit.png" alt="Overcoming Inertia and checking Framework of Fit" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="5">
+                                            <img src="moleskine-strategic-innovation/moleskine-slide5-ambidexterity.png" alt="Ambidexterity" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="6">
+                                            <img src="moleskine-strategic-innovation/moleskine-slide6-search-type-and-strategy.png" alt="Search Type, Strategy and Approach" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="7">
+                                            <img src="moleskine-strategic-innovation/moleskine-slide7-partnetship-mattel.png" alt="Strategic Partnership" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="8">
+                                            <img src="moleskine-strategic-innovation/moleskine-slide8-culture-change.png" alt="Culture Change" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="9">
+                                            <img src="moleskine-strategic-innovation/moleskine-slide9-identity-change.png" alt="Identity Change" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="story-slide" data-stage="10">
+                                            <img src="moleskine-strategic-innovation/moleskine-slide10-goals-kpi-timeline.png" alt="Setting Goals, KPIs and Timeline" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collapse-bar">
+                                <button class="collapse-btn">
+                                    <i class="fas fa-chevron-up"></i>
+                                    <span>Collapse Project</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get in Touch CTA Section -->
+    <section class="get-in-touch-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Collaborate?</h2>
+                <p class="cta-subtitle">Let's discuss how we can work together on your next project</p>
+                <a href="about.html#contact-about" class="btn btn-primary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Vinuta. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=20250127"></script>
+    <script>
+        // Ensure scroll to top - runs after all other scripts
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const hasCategory = urlParams.get('category');
+            
+            if (!hasCategory) {
+                function scrollToTop() {
+                    // Force scroll to top using all methods
+                    window.scrollTo(0, 0);
+                    if (document.documentElement) {
+                        document.documentElement.scrollTop = 0;
+                    }
+                    if (document.body) {
+                        document.body.scrollTop = 0;
+                    }
+                    // Also set scroll position directly
+                    if (document.documentElement) {
+                        document.documentElement.scrollTop = 0;
+                    }
+                }
+                
+                // Wait for all scripts to finish, then scroll
+                if (document.readyState === 'complete') {
+                    // Page already loaded
+                    setTimeout(scrollToTop, 0);
+                    setTimeout(scrollToTop, 50);
+                    setTimeout(scrollToTop, 150);
+                } else {
+                    // Wait for page to fully load
+                    window.addEventListener('load', function() {
+                        scrollToTop();
+                        setTimeout(scrollToTop, 50);
+                        setTimeout(scrollToTop, 150);
+                    }, { once: true });
+                    
+                    // Also scroll on DOMContentLoaded
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', function() {
+                            scrollToTop();
+                        }, { once: true });
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+</html>
+
+
+
+
