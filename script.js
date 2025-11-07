@@ -1,3 +1,138 @@
+// ============================================
+// CONTENT PROTECTION - Portfolio Security
+// ============================================
+(function() {
+    'use strict';
+    
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    }, false);
+    
+    // Disable text selection
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+    }, false);
+    
+    // Disable drag and drop
+    document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+    }, false);
+    
+    // Disable image dragging
+    document.addEventListener('drag', function(e) {
+        e.preventDefault();
+        return false;
+    }, false);
+    
+    // Disable keyboard shortcuts for copying
+    document.addEventListener('keydown', function(e) {
+        // Disable Ctrl+C, Ctrl+A, Ctrl+S, Ctrl+P, Ctrl+U, F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+        if (e.ctrlKey || e.metaKey) {
+            // Allow Ctrl+F (find) and Ctrl+K (browser search)
+            if (e.key === 'c' || e.key === 'C' || 
+                e.key === 'a' || e.key === 'A' || 
+                e.key === 's' || e.key === 'S' || 
+                e.key === 'p' || e.key === 'P' || 
+                e.key === 'u' || e.key === 'U' ||
+                e.key === 'i' || e.key === 'I' ||
+                e.key === 'j' || e.key === 'J') {
+                e.preventDefault();
+                return false;
+            }
+        }
+        
+        // Disable F12 (Developer Tools)
+        if (e.key === 'F12') {
+            e.preventDefault();
+            return false;
+        }
+        
+        // Disable Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey) {
+            if (e.key === 'I' || e.key === 'J' || e.key === 'C') {
+                e.preventDefault();
+                return false;
+            }
+        }
+    }, false);
+    
+    // Disable copy event
+    document.addEventListener('copy', function(e) {
+        e.clipboardData.setData('text/plain', 'Content is protected. © Vinuta Lakshmi Tilak. All rights reserved.');
+        e.preventDefault();
+        return false;
+    }, false);
+    
+    // Disable cut event
+    document.addEventListener('cut', function(e) {
+        e.preventDefault();
+        return false;
+    }, false);
+    
+    // Add CSS to disable text selection globally
+    const style = document.createElement('style');
+    style.textContent = `
+        * {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important;
+        }
+        
+        img, video {
+            -webkit-user-drag: none !important;
+            -khtml-user-drag: none !important;
+            -moz-user-drag: none !important;
+            -o-user-drag: none !important;
+            user-drag: none !important;
+        }
+        
+        /* Prevent image saving via right-click, but allow clicking for navigation */
+        img {
+            pointer-events: auto !important;
+        }
+        
+        /* Allow text selection in input fields and textareas for contact form */
+        input, textarea {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Basic developer tools detection (can be bypassed, but deters casual users)
+    let devtools = {open: false, orientation: null};
+    const threshold = 160;
+    
+    setInterval(function() {
+        if (window.outerHeight - window.innerHeight > threshold || 
+            window.outerWidth - window.innerWidth > threshold) {
+            if (!devtools.open) {
+                devtools.open = true;
+                // Optionally redirect or show warning
+                // window.location.href = 'about:blank';
+            }
+        } else {
+            devtools.open = false;
+        }
+    }, 500);
+    
+    // Console warning
+    console.log('%cStop!', 'color: red; font-size: 50px; font-weight: bold;');
+    console.log('%cThis is a browser feature intended for developers. If someone told you to copy-paste something here, it is a scam and will give them access to your account.', 'color: red; font-size: 16px;');
+    
+    // Add copyright notice to console
+    console.log('%c© 2024 Vinuta Lakshmi Tilak. All rights reserved.', 'color: #42549b; font-size: 12px;');
+    console.log('%cUnauthorized copying, reproduction, or distribution of this portfolio content is prohibited.', 'color: #666; font-size: 10px;');
+})();
+
 // ContactSection Component
 function ContactSection(props = {}) {
     const {
@@ -502,6 +637,10 @@ document.addEventListener('DOMContentLoaded', function() {
             clearTimeout(hideTimeout);
         }
         
+        // For mobile scroll system, hide immediately without delay
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        const delay = isTouchDevice ? 0 : 150;
+        
         hideTimeout = setTimeout(() => {
             if (previewPanel) {
                 previewPanel.classList.remove('show');
@@ -510,30 +649,157 @@ document.addEventListener('DOMContentLoaded', function() {
                 slide.classList.remove('active');
             });
             currentHoveredStrip = null;
-        }, 150);
+        }, delay);
     }
     
-    categoryStrips.forEach(strip => {
-        // Mouse enter - show preview
-        strip.addEventListener('mouseenter', function() {
-            currentHoveredStrip = this;
-            const category = this.getAttribute('data-category');
-            showPreview(category);
-        });
+    // Determine if we're in mobile view based on window width
+    // This ensures desktop hover works properly even if browser reports touch capability
+    const isMobileView = window.innerWidth <= 768;
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    if (isMobileView) {
+        // MOBILE MODE: Scroll-triggered preview system
+        console.log('Mobile scroll preview system activated');
         
-        // Mouse leave - hide preview with delay
-        strip.addEventListener('mouseleave', function() {
-            if (currentHoveredStrip === this) {
+        let activeScrollPreview = null;
+        let scrollHandler = null;
+        
+        function getTriggerZone() {
+            // Recalculate trigger zone on each call (handles resize)
+            return {
+                top: window.innerHeight * 0.4,
+                bottom: window.innerHeight * 0.6,
+                center: window.innerHeight * 0.5
+            };
+        }
+        
+        function findStripInTriggerZone() {
+            const zone = getTriggerZone();
+            let closestStrip = null;
+            let closestDistance = Infinity;
+            
+            categoryStrips.forEach(strip => {
+                const rect = strip.getBoundingClientRect();
+                const stripCenter = rect.top + (rect.height / 2);
+                
+                // Check if strip center is within trigger zone
+                if (stripCenter >= zone.top && stripCenter <= zone.bottom) {
+                    const distance = Math.abs(stripCenter - zone.center);
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestStrip = strip;
+                    }
+                }
+            });
+            
+            return closestStrip;
+        }
+        
+        function updateScrollPreview() {
+            // Only run if still in mobile view
+            if (window.innerWidth > 768) {
+                // Switched to desktop view, remove scroll handler
+                if (scrollHandler) {
+                    window.removeEventListener('scroll', scrollHandler, { passive: true });
+                    scrollHandler = null;
+                }
+                return;
+            }
+            
+            const stripInZone = findStripInTriggerZone();
+            
+            if (stripInZone && stripInZone !== activeScrollPreview) {
+                // New strip entered the zone
+                activeScrollPreview = stripInZone;
+                
+                // Remove active class from all strips
+                categoryStrips.forEach(s => s.classList.remove('active'));
+                
+                // Add active class to current strip
+                stripInZone.classList.add('active');
+                
+                const category = stripInZone.getAttribute('data-category');
+                console.log('Showing preview for:', category);
+                showPreview(category);
+            } else if (!stripInZone && activeScrollPreview) {
+                // No strip in zone, hide preview
+                console.log('Hiding preview - no strip in zone');
+                activeScrollPreview = null;
+                categoryStrips.forEach(s => s.classList.remove('active'));
                 hidePreview();
             }
-        });
+        }
         
-        // Click handler
-        strip.addEventListener('click', function() {
-            const category = this.getAttribute('data-category');
-            window.location.href = `projects.html?category=${category}`;
+        // Throttled scroll handler - only for mobile
+        let scrollThrottle = null;
+        scrollHandler = function() {
+            if (scrollThrottle) {
+                clearTimeout(scrollThrottle);
+            }
+            scrollThrottle = setTimeout(updateScrollPreview, 50);
+        };
+        window.addEventListener('scroll', scrollHandler, { passive: true });
+        
+        // Handle window resize - switch between mobile/desktop modes
+        window.addEventListener('resize', function() {
+            const nowMobile = window.innerWidth <= 768;
+            if (nowMobile) {
+                updateScrollPreview();
+            } else {
+                // Switched to desktop, clean up mobile handlers
+                if (scrollHandler) {
+                    window.removeEventListener('scroll', scrollHandler, { passive: true });
+                    scrollHandler = null;
+                }
+                activeScrollPreview = null;
+                hidePreview();
+            }
+        }, { passive: true });
+        
+        // Initial check
+        updateScrollPreview();
+        
+        // Touch/tap handlers for mobile navigation
+        categoryStrips.forEach(strip => {
+            strip.addEventListener('touchstart', function(e) {
+                // Don't prevent default - allow scroll
+                // Just add visual feedback
+                categoryStrips.forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+            });
+            
+            // Click handler for mobile - navigate
+            strip.addEventListener('click', function(e) {
+                const category = this.getAttribute('data-category');
+                window.location.href = `projects.html?category=${category}`;
+            });
         });
-    });
+    } else {
+        // DESKTOP MODE: Mouse hover behavior (no scroll interference)
+        console.log('Desktop hover preview system activated');
+        
+        categoryStrips.forEach(strip => {
+            // Mouse enter - show preview
+            strip.addEventListener('mouseenter', function() {
+                currentHoveredStrip = this;
+                const category = this.getAttribute('data-category');
+                showPreview(category);
+            });
+            
+            // Mouse leave - hide preview with delay
+            strip.addEventListener('mouseleave', function() {
+                if (currentHoveredStrip === this) {
+                    hidePreview();
+                }
+            });
+            
+            // Desktop click handler - navigate immediately
+            strip.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                window.location.href = `projects.html?category=${category}`;
+            });
+        });
+    }
     
     // Also handle mouse events on the preview panel itself
     if (previewPanel) {
@@ -802,14 +1068,239 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Helper function to scroll timeline item into view on mobile
+    function scrollTimelineIntoView(timelineItem) {
+        if (!timelineItem) return;
+        
+        const timelineNav = timelineItem.closest('.timeline-nav');
+        if (!timelineNav) return;
+        
+        // Check if we're on mobile (timeline is horizontal)
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile) return; // Desktop timeline is vertical, no need to scroll
+        
+        // Scroll the active timeline item into view
+        const itemLeft = timelineItem.offsetLeft;
+        const itemWidth = timelineItem.offsetWidth;
+        const navWidth = timelineNav.offsetWidth;
+        const navScrollLeft = timelineNav.scrollLeft;
+        
+        // Calculate the position to center the item or keep it visible
+        const itemCenter = itemLeft + (itemWidth / 2);
+        const navCenter = navScrollLeft + (navWidth / 2);
+        const scrollOffset = itemCenter - navCenter;
+        
+        timelineNav.scrollTo({
+            left: navScrollLeft + scrollOffset,
+            behavior: 'smooth'
+        });
+    }
+    
+    // Arrow navigation setup function - defined outside loop for accessibility
+    function setupArrowNavigation(panel) {
+        if (!panel) {
+            console.log('setupArrowNavigation: No panel provided');
+            return;
+        }
+        
+        const prevBtn = panel.querySelector('.slide-nav-prev');
+        const nextBtn = panel.querySelector('.slide-nav-next');
+        const panelTimelineItems = panel.querySelectorAll('.timeline-item');
+        const panelStorySlides = panel.querySelectorAll('.story-slide');
+        const panelSlideshow = panel.querySelector('.story-slideshow');
+        
+        console.log('setupArrowNavigation called:', {
+            panel: !!panel,
+            prevBtn: !!prevBtn,
+            nextBtn: !!nextBtn,
+            timelineItems: panelTimelineItems.length,
+            storySlides: panelStorySlides.length,
+            slideshow: !!panelSlideshow
+        });
+        
+        if (!prevBtn || !nextBtn || !panelTimelineItems.length) {
+            console.log('Arrow navigation setup failed:', { prevBtn: !!prevBtn, nextBtn: !!nextBtn, timelineItems: panelTimelineItems.length });
+            return;
+        }
+        
+        // Store panel reference for use in closures
+        const panelRef = panel;
+        const timelineItemsRef = panelTimelineItems;
+        const storySlidesRef = panelStorySlides;
+        const slideshowRef = panelSlideshow;
+        
+        function updateArrowButtons(currentIndex, totalSlides) {
+            if (prevBtn) prevBtn.disabled = currentIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentIndex >= totalSlides - 1;
+            console.log('Arrow buttons updated:', { currentIndex, totalSlides, prevDisabled: prevBtn?.disabled, nextDisabled: nextBtn?.disabled });
+        }
+        
+        function navigateSlide(direction) {
+            console.log('navigateSlide called:', direction);
+            const activeTimeline = panelRef.querySelector('.timeline-item.active');
+            if (!activeTimeline) {
+                console.log('No active timeline found');
+                return;
+            }
+            
+            const currentIndex = Array.from(timelineItemsRef).indexOf(activeTimeline);
+            console.log('Current index:', currentIndex);
+            
+            if (currentIndex === -1) {
+                console.log('Current index is -1, returning');
+                return;
+            }
+            
+            let newIndex;
+            if (direction === 'next') {
+                newIndex = Math.min(currentIndex + 1, timelineItemsRef.length - 1);
+            } else {
+                newIndex = Math.max(currentIndex - 1, 0);
+            }
+            
+            console.log('New index:', newIndex, 'Current index:', currentIndex);
+            
+            if (newIndex !== currentIndex && timelineItemsRef[newIndex]) {
+                // Remove active class from all
+                timelineItemsRef.forEach(ti => ti.classList.remove('active'));
+                storySlidesRef.forEach(ss => ss.classList.remove('active'));
+                
+                // Add active class to new slide
+                timelineItemsRef[newIndex].classList.add('active');
+                if (storySlidesRef[newIndex]) {
+                    storySlidesRef[newIndex].classList.add('active');
+                }
+                
+                // Update active slide title
+                const activeSlideTitleEl = panelRef.querySelector('.active-slide-title');
+                if (activeSlideTitleEl && timelineItemsRef[newIndex]) {
+                    const activeLabel = timelineItemsRef[newIndex].querySelector('.timeline-label');
+                    if (activeLabel) {
+                        activeSlideTitleEl.textContent = activeLabel.textContent.trim();
+                    } else {
+                        activeSlideTitleEl.textContent = '';
+                    }
+                }
+                
+                // Scroll to the corresponding slide
+                if (slideshowRef && storySlidesRef[newIndex]) {
+                    const slideWidth = storySlidesRef[newIndex].offsetWidth + 32; // 32px gap (2rem)
+                    console.log('Scrolling to slide:', newIndex, 'at position:', slideWidth * newIndex);
+                    slideshowRef.scrollTo({ 
+                        left: slideWidth * newIndex, 
+                        behavior: 'smooth' 
+                    });
+                }
+                
+                // Scroll timeline item into view on mobile
+                scrollTimelineIntoView(timelineItemsRef[newIndex]);
+                
+                // Update arrow states
+                updateArrowButtons(newIndex, timelineItemsRef.length);
+            }
+        }
+        
+        // Remove any existing event listeners by using onclick (simpler approach)
+        prevBtn.onclick = null;
+        nextBtn.onclick = null;
+        
+        // Add click event listeners using onclick for simplicity
+        prevBtn.onclick = function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            console.log('Prev button clicked - onclick handler');
+            navigateSlide('prev');
+            return false;
+        };
+        
+        nextBtn.onclick = function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            console.log('Next button clicked - onclick handler');
+            navigateSlide('next');
+            return false;
+        };
+        
+        // Also add addEventListener as backup
+        prevBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            console.log('Prev button clicked - addEventListener handler');
+            navigateSlide('prev');
+        }, true); // Use capture phase
+        
+        nextBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            console.log('Next button clicked - addEventListener handler');
+            navigateSlide('next');
+        }, true); // Use capture phase
+        
+        // Initialize arrow button states
+        if (timelineItemsRef.length > 0) {
+            const activeIndex = Array.from(timelineItemsRef).findIndex(ti => ti.classList.contains('active'));
+            updateArrowButtons(activeIndex >= 0 ? activeIndex : 0, timelineItemsRef.length);
+        }
+        
+        // Update arrows when timeline items are clicked
+        timelineItemsRef.forEach((timelineItem, index) => {
+            timelineItem.addEventListener('click', function() {
+                setTimeout(() => {
+                    updateArrowButtons(index, timelineItemsRef.length);
+                }, 100);
+            });
+        });
+        
+        // Update arrows when slideshow scrolls
+        if (slideshowRef) {
+            slideshowRef.addEventListener('scroll', function() {
+                const scrollLeft = slideshowRef.scrollLeft;
+                const slideWidth = storySlidesRef[0]?.offsetWidth + 32;
+                const activeIndex = Math.round(scrollLeft / slideWidth);
+                
+                if (activeIndex >= 0 && activeIndex < timelineItemsRef.length) {
+                    updateArrowButtons(activeIndex, timelineItemsRef.length);
+                }
+            });
+        }
+        
+        console.log('Arrow navigation setup complete');
+    }
+    
     projectItems.forEach((item, index) => {
         const header = item.querySelector('.project-item-header');
         const projectId = item.getAttribute('data-project');
         const expandPanel = document.querySelector(`.project-expand-panel[data-project="${projectId}"]`);
-        const collapseBtn = expandPanel ? expandPanel.querySelector('.collapse-btn') : null;
+        const collapseBar = expandPanel ? expandPanel.querySelector('.collapse-bar') : null;
         const timelineItems = expandPanel ? expandPanel.querySelectorAll('.timeline-item') : [];
         const storySlides = expandPanel ? expandPanel.querySelectorAll('.story-slide') : [];
         const slideshow = expandPanel ? expandPanel.querySelector('.story-slideshow') : null;
+        const storyContent = expandPanel ? expandPanel.querySelector('.story-content') : null;
+        const timelineNav = expandPanel ? expandPanel.querySelector('.timeline-nav') : null;
+        
+        // Create active slide title element for mobile
+        let activeSlideTitleEl = null;
+        if (expandPanel && timelineNav && storyContent) {
+            // Check if title element already exists
+            activeSlideTitleEl = expandPanel.querySelector('.active-slide-title');
+            if (!activeSlideTitleEl) {
+                activeSlideTitleEl = document.createElement('div');
+                activeSlideTitleEl.className = 'active-slide-title';
+                // Insert between timeline-nav and story-content
+                timelineNav.parentNode.insertBefore(activeSlideTitleEl, storyContent);
+            }
+        }
+        
+        // Function to update active slide title
+        function updateActiveSlideTitle(activeIndex) {
+            if (!activeSlideTitleEl || !timelineItems[activeIndex]) return;
+            const activeLabel = timelineItems[activeIndex].querySelector('.timeline-label');
+            if (activeLabel) {
+                activeSlideTitleEl.textContent = activeLabel.textContent.trim();
+            } else {
+                activeSlideTitleEl.textContent = '';
+            }
+        }
         
         // Toggle project expansion
         if (header && expandPanel) {
@@ -858,18 +1349,26 @@ document.addEventListener('DOMContentLoaded', function() {
                         timelineItems[0].classList.add('active');
                         storySlides[0].classList.add('active');
                         
+                        // Update active slide title
+                        updateActiveSlideTitle(0);
+                        
                         // Scroll to first slide
                         if (slideshow) {
                             slideshow.scrollTo({ left: 0, behavior: 'smooth' });
                         }
                     }
+                    
+                    // Set up arrow navigation after panel is expanded
+                    setTimeout(() => {
+                        setupArrowNavigation(expandPanel);
+                    }, 100);
                 }
             });
         }
         
-        // Collapse button functionality
-        if (collapseBtn) {
-            collapseBtn.addEventListener('click', function(e) {
+        // Collapse bar functionality - entire bar is clickable
+        if (collapseBar) {
+            collapseBar.addEventListener('click', function(e) {
                 e.stopPropagation();
                 
                 // Store the current scroll position before collapsing
@@ -905,6 +1404,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (storySlides[index]) {
                     storySlides[index].classList.add('active');
                     
+                    // Update active slide title
+                    updateActiveSlideTitle(index);
+                    
                     // Scroll to the corresponding slide
                     if (slideshow) {
                         const slideWidth = storySlides[index].offsetWidth + 32; // 32px gap (2rem)
@@ -914,6 +1416,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         });
                     }
                 }
+                
+                // Scroll timeline item into view on mobile
+                scrollTimelineIntoView(timelineItem);
             });
         });
         
@@ -930,9 +1435,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     timelineItems[activeIndex]?.classList.add('active');
                     storySlides[activeIndex]?.classList.add('active');
+                    
+                    // Update active slide title
+                    updateActiveSlideTitle(activeIndex);
+                    
+                    // Scroll timeline item into view on mobile
+                    scrollTimelineIntoView(timelineItems[activeIndex]);
                 }
             });
         }
+        
     });
     
     // Sticky Project Headers
