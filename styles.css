@@ -1504,9 +1504,9 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
     }
     
     .nav-link {
-        font-size: 0.95rem;
-        padding: 0.5rem 0.75rem;
-        min-height: 44px;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.65rem;
+        min-height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1518,8 +1518,8 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
     
     /* Adjust hero padding for taller navbar */
     .hero {
-        padding-top: 120px; /* Increased to prevent image cutoff */
-        padding-bottom: 40px;
+        padding-top: 130px; /* Extra offset for fixed nav */
+        padding-bottom: 45px;
     }
     
     .hero-content {
@@ -1529,7 +1529,7 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
     }
     
     .hero-image {
-        margin-top: 1rem; /* Push image down further */
+        margin-top: 1.5rem;
     }
     
     .profile-photo {
@@ -1581,7 +1581,7 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
     }
     
     .nav-logo span {
-        font-size: 1.2rem !important;
+        font-size: 1.1rem !important;
         font-weight: 700 !important;
         color: var(--color-delft-blue) !important;
         font-family: 'Inter', sans-serif !important;
@@ -1822,9 +1822,9 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
     }
     
     .experience-card {
-        min-width: 260px;
-        width: 260px;
-        padding: 1rem;
+        min-width: 0;
+        width: calc(100% - 0.75rem);
+        padding: 0.875rem;
     }
     
     .card-title {
@@ -1849,8 +1849,8 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
     }
     
     .experience-cards-slideshow {
-        padding: 0.5rem 0.75rem;
-        gap: 0.75rem;
+        padding: 0.5rem;
+        gap: 0.5rem;
     }
     
     .experience-timeline-container {
@@ -3444,6 +3444,59 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
         font-size: 0.85rem;
         padding: 0.5rem 0.875rem;
     }
+
+    .about-header {
+        padding: 130px 0 45px;
+    }
+
+    .about-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.5rem;
+        justify-items: center;
+    }
+
+    .about-image {
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .about-image .photo-container {
+        margin: 0 auto;
+    }
+
+    .about-photo {
+        width: 140px;
+        height: 140px;
+        border: 3px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .about-title {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .about-subtitle {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .about-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-header .hero-buttons {
+        justify-content: center;
+    }
+
+    .about-header .hero-buttons .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        max-width: 250px;
+        margin: 0 auto;
+    }
 }
 
 .core-competencies,
@@ -3701,16 +3754,16 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
     border: 1px solid rgba(34, 57, 109, 0.2);
     border-radius: 10px;
     padding: 1.5rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1),
-                0 4px 12px rgba(0, 0, 0, 0.08),
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06),
+                0 4px 12px rgba(0, 0, 0, 0.04),
                 inset 0 1px 0 rgba(255, 255, 255, 0.6);
     scroll-snap-align: center;
     transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
     cursor: pointer;
     pointer-events: auto;
     outline: none;
-    opacity: 0.7;
-    transform: translateX(20px);
+    opacity: 0.9;
+    transform: translateZ(0);
 }
 
 .experience-card:focus {
@@ -3722,18 +3775,17 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
 /* Active Card - fully visible */
 .experience-card.active {
     opacity: 1;
-    transform: translateX(0);
-    box-shadow: 0 24px 72px rgba(0, 0, 0, 0.15),
-                0 12px 32px rgba(0, 0, 0, 0.1),
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12),
+                0 12px 28px rgba(0, 0, 0, 0.08),
                 inset 0 1px 0 rgba(255, 255, 255, 0.8);
     border-color: rgba(34, 57, 109, 0.2);
 }
 
 .experience-card.active:hover {
     transform: translateY(-8px);
-    box-shadow: 0 32px 96px rgba(0, 0, 0, 0.2),
-                0 16px 40px rgba(0, 0, 0, 0.15),
-                0 0 0 2px rgba(255, 166, 158, 0.3),
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.16),
+                0 16px 40px rgba(0, 0, 0, 0.12),
+                0 0 0 2px rgba(255, 166, 158, 0.24),
                 inset 0 1px 0 rgba(255, 255, 255, 0.9);
     border-color: rgba(34, 57, 109, 0.2);
 }
@@ -3911,14 +3963,14 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
     }
     
     .experience-cards-slideshow {
-        padding: 0.75rem 1rem;
-        gap: 1rem;
+        padding: 0.5rem 0.5rem;
+        gap: 0.75rem;
     }
     
     .experience-card {
-        min-width: 280px;
-        width: 280px;
-        padding: 1.25rem;
+        min-width: 0;
+        width: calc(100% - 1rem);
+        padding: 1rem;
     }
     
     .card-header {
@@ -4931,10 +4983,10 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
     border: 1px solid rgba(148, 163, 184, 0.2);
     border-radius: 1.25rem;
     padding: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
     transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-    opacity: 0;
-    transform: translateX(20px);
+    opacity: 0.9;
+    transform: translateZ(0);
     backdrop-filter: blur(10px);
     display: flex;
     overflow: hidden;
@@ -4942,12 +4994,13 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
 
 .story-slide.active {
     opacity: 1;
-    transform: translateX(0);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12),
+                0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
 .story-slide:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 20px 56px rgba(0, 0, 0, 0.14);
     background: rgba(255, 255, 255, 0.85);
 }
 
@@ -5065,11 +5118,12 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
     }
     
     .timeline-nav {
+        --timeline-gap: 1.5rem;
         width: 100%;
         flex-direction: row;
         overflow-x: auto;
         padding: 1rem 0.5rem;
-        gap: 1.5rem;
+        gap: var(--timeline-gap);
         scrollbar-width: thin;
         -webkit-overflow-scrolling: touch;
         position: relative;
@@ -5077,19 +5131,9 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
         align-items: center;
     }
     
-    /* Horizontal line for timeline - matching desktop style */
+    /* Hide desktop connector line; mobile uses per-item connectors */
     .timeline-nav::after {
-        content: '';
-        position: absolute;
-        left: 0.5rem;
-        right: 0.5rem;
-        top: 50%;
-        height: 2px;
-        background: linear-gradient(to right, #42549b, #42549b, #42549b);
-        border-radius: 9999px;
-        opacity: 0.8;
-        transform: translateY(-50%);
-        z-index: 0;
+        display: none;
     }
     
     .timeline-nav::-webkit-scrollbar {
@@ -5145,6 +5189,27 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
         box-shadow: 0 0 8px rgba(66, 84, 155, 0.4);
         transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
         transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    /* Connector line between dots */
+    .timeline-item::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 2px;
+        width: calc(var(--timeline-gap, 1.5rem) + 24px);
+        background: rgba(66, 84, 155, 0.6);
+        transform: translateY(-50%);
+        border-radius: 9999px;
+        opacity: 0.6;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .timeline-item:last-child::after {
+        display: none;
     }
     
     .timeline-item.active::before {
@@ -5247,9 +5312,9 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
     }
     
     .story-slide {
-        min-width: calc(100vw - 3rem);
-        max-width: calc(100vw - 3rem);
-        width: calc(100vw - 3rem);
+        min-width: 100%;
+        max-width: 100%;
+        width: 100%;
         height: auto;
         min-height: calc(100vw * 9 / 16);
         aspect-ratio: 16/9;
