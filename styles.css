@@ -1526,10 +1526,16 @@ a:not(.btn):not(.nav-link):not(.contact-btn-link):not(.social-links a):hover::af
         grid-template-columns: 1fr;
         text-align: center;
         gap: 1.5rem;
+        justify-items: center;
     }
     
     .hero-image {
         margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-image .photo-container {
+        margin: 0 auto;
     }
     
     .profile-photo {
